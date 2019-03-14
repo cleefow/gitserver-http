@@ -6,6 +6,9 @@ RUN set -x && \
 
   adduser git -h /var/lib/git -D                        &&  \
   adduser nginx git                                     &&  \
+  chmod 755 /root                                       &&  \
+  mkdir -p /root/.config/git                            &&  \
+  touch /root/.config/git/attributes                    &&  \
 
   git config --system http.receivepack true             &&  \
   git config --system http.uploadpack true              &&  \
@@ -19,6 +22,5 @@ RUN set -x && \
 ADD ./etc /etc
 ADD ./entrypoint.sh /usr/local/bin/entrypoint
 
-USER git
 ENTRYPOINT [ "entrypoint" ]
 CMD [ "-start" ]
