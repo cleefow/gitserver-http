@@ -19,5 +19,6 @@ RUN set -x && \
 ADD ./etc /etc
 ADD ./entrypoint.sh /usr/local/bin/entrypoint
 
+USER git
 ENTRYPOINT [ "entrypoint" ]
 CMD [ "-start" ]
